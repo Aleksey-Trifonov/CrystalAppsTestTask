@@ -1,18 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private float speed = 5f;
+
+    private Animator animator = null;
+
+    private void Awake()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        Vector3 movementVector = new Vector3(horizontalInput, 0f, verticalInput);
+
+        if (movementVector.magnitude != 0f)
+        {
+            movementVector.Normalize();
+            movementVector *= speed * Time.deltaTime;
+            transform.Translate(movementVector, Space.Self);
+        }
+
+        float velocityZ = Vector3.Dot(movementVector.normalized, transform.forward);
+        float velocityX = Vector3.Dot(movementVector.normalized, transform.right);
+
+        animator.SetFloat("VelocityZ", velocityZ, 0.1f, Time.deltaTime);
+        animator.SetFloat("VelocityX", velocityX, 0.1f, Time.deltaTime);
     }
 }
