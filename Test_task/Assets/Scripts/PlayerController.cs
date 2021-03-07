@@ -32,4 +32,9 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("VelocityZ", velocityZ, 0.1f, Time.deltaTime);
         animator.SetFloat("VelocityX", velocityX, 0.1f, Time.deltaTime);
     }
+
+    private void LateUpdate()
+    {
+        //rotate towards camera
+    }
 }

@@ -2405,7 +2405,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  turnSpeed: 100
 --- !u!95 &4162805588268663918
 Animator:
   serializedVersion: 3
@@ -2453,7 +2452,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &7247805449979010363
 GameObject:
