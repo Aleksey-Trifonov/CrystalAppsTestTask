@@ -49,10 +49,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnDialogueEnter()
+    public void StartDialogue()
     {
         isInputEnabled = false;
         animator.SetFloat("VelocityZ", 0f, 0.1f, Time.deltaTime);
         animator.SetFloat("VelocityX", 0f, 0.1f, Time.deltaTime);
+        animator.SetTrigger("Begin_dialogue");
     }
 }

@@ -16,13 +16,15 @@ public class NpcController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        var playerController = other.GetComponent<PlayerController>();
+        if (playerController)
         {
-            
+            playerController.StartDialogue();
+            StartDialogue();
         }
     }
 
-    public void OnStartDialogue()
+    private void StartDialogue()
     {
         dialogueMark.SetActive(false);
         animator.SetTrigger("Begin_dialogue");
