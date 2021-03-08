@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class NpcController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private GameObject dialogueMark = null;
+
+    private Animator animator = null;
+
+    private void Awake()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.CompareTag("Player"))
+        {
+            
+        }
+    }
+
+    public void OnStartDialogue()
+    {
+        dialogueMark.SetActive(false);
+        animator.SetTrigger("Begin_dialogue");
     }
 }
