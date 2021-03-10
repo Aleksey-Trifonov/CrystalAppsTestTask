@@ -2396,8 +2396,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  rotationSpeed: 60
+  rotationSpeed: 100
   deadZoneDegrees: 5
+  timeline: {fileID: 0}
 --- !u!95 &4162805588268663918
 Animator:
   serializedVersion: 3

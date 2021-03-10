@@ -1,3 +1,5 @@
+using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -55,5 +57,23 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("VelocityZ", 0f, 0.1f, Time.deltaTime);
         animator.SetFloat("VelocityX", 0f, 0.1f, Time.deltaTime);
         animator.SetTrigger("Begin_dialogue");
+        TimelineManager.Instance.PlayTimeline();
+        StartCoroutine(TimelineCoroutine((float)TimelineManager.Instance.Timeline.duration));
+    }
+
+    private IEnumerator TimelineCoroutine(float time)
+    {
+        var timer = time;
+        while (timer > 0f)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#else
+        Application.Quit();
+#endif
     }
 }
